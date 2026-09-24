@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Game mô phỏng bốn quy luật của nền kinh tế thị trường, xây dựng từ nội dung bài học Kinh tế chính trị Mác – Lênin.">
+  <meta name="theme-color" content="#17231d">
+  <title>Phiên Chợ — Game kinh tế thị trường</title>
+  <link rel="stylesheet" href="game.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">P<span>·</span>C</span><span>PHIÊN CHỢ<small> MÔ PHỎNG KINH TẾ THỊ TRƯỜNG</small></span></a><div class="top-actions"><span class="chapter-label" id="header-status">SỔ TAY NGƯỜI CHƠI</span><button id="sound-toggle" class="icon-btn" type="button" aria-label="Bật hoặc tắt âm thanh">♪</button></div></header>
+  <main id="app">
+    <section id="intro-screen" class="screen intro-screen">
+      <div class="intro-copy"><div class="eyebrow"><span class="live-dot"></span> BÀI HỌC TƯƠNG TÁC · CHƯƠNG 02</div><h1>Mỗi quyết định<br>đều để lại <em>dấu vết.</em></h1><p class="intro-lead">Quản lý một khu chợ qua bốn chương. Đầu tư nguồn lực, xử lý biến động và khám phá cách các quy luật kinh tế tác động tới sản xuất, giá cả và đời sống.</p><div class="intro-details"><span>⌁ &nbsp; 12 tình huống</span><span>◷ &nbsp; 15–20 phút</span><span>▤ &nbsp; 7 công trình chiến lược</span></div><button id="begin-btn" class="primary-btn">MỞ SỔ THỊ TRƯỜNG <span>→</span></button><a class="back-link" href="../index.html">← Trở về GoodLawsPlease</a></div>
+      <div class="cover-art" aria-label="Minh họa phiên chợ">
+        <div class="cover-sky"><span class="sun"></span><span class="bird bird-one">⌁</span><span class="bird bird-two">⌁</span><div class="mountain"></div><div class="town"></div></div>
+        <div class="market-front"><div class="awning"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="stall-roof"></div><div class="stall"><div class="shelf"><b>▰</b><b>◉</b><b>▰</b><b>◉</b><b>▰</b></div><div class="seller">●</div></div><div class="crate crate-one">▧</div><div class="crate crate-two">▧</div><div class="price-tag">GIÁ<br><strong>?</strong></div><div class="cover-caption">MỘT KHU CHỢ · BỐN QUY LUẬT · VÔ VÀN LỰA CHỌN</div></div>
+        <div class="cover-index">HỒ SƠ<br><strong>02—04</strong></div>
+      </div>
+      <div class="intro-bottom"><span>GOODLAWSPLEASE PRESENTS</span><span>GIÁ TRỊ · CUNG CẦU · TIỀN TỆ · CẠNH TRANH</span></div>
+    </section>
+
+    <section id="game-screen" class="screen game-screen" hidden>
+      <div class="campaign-strip"><div class="campaign-heading"><span>HÀNH TRÌNH THỊ TRƯỜNG</span><strong id="campaign-progress">0 / 12 HỒ SƠ</strong></div><div id="chapter-track" class="chapter-track"></div></div>
+      <div class="dashboard"><div class="dash-title"><span class="live-dot"></span><span id="day-label">PHIÊN CHỢ 01</span><strong id="chapter-title">QUY LUẬT GIÁ TRỊ</strong></div><div class="meters">
+        <div class="meter"><div class="meter-top"><span>🏭 SẢN XUẤT</span><b id="value-production">50</b></div><div class="meter-track"><i id="bar-production"></i></div></div>
+        <div class="meter"><div class="meter-top"><span>🪙 GIÁ CẢ</span><b id="value-prices">50</b></div><div class="meter-track"><i id="bar-prices"></i></div></div>
+        <div class="meter"><div class="meter-top"><span>🤝 ĐỜI SỐNG</span><b id="value-welfare">50</b></div><div class="meter-track"><i id="bar-welfare"></i></div></div>
+      </div><div class="dash-day"><small>LƯỢT</small><strong id="round-number">01</strong><span>/ 12</span></div></div>
+      <div class="economy-dashboard"><div class="economy-head"><span>◉ TRẠNG THÁI KHU CHỢ</span><span id="treasury-label">NGÂN QUỸ: 48 XU</span></div><div class="economy-values"><div><span>HÀNG HÓA</span><strong id="supply-value">50</strong></div><div><span>NHU CẦU</span><strong id="demand-value">50</strong></div><div><span>TIỀN LƯU THÔNG</span><strong id="money-value">50</strong></div><div><span>VÒNG QUAY TIỀN</span><strong id="velocity-value">50</strong></div></div><div class="market-balance"><div class="market-balance-bar"><i id="balance-marker"></i></div><span id="balance-message">CUNG VÀ CẦU TƯƠNG ĐỐI CÂN BẰNG</span></div></div>
+      <div class="market-map"><div class="map-label"><span>▤ KHU CHỢ CỦA BẠN</span><small>CÔNG TRÌNH ĐÃ ĐẦU TƯ SẼ XUẤT HIỆN Ở ĐÂY</small></div><div id="market-buildings" class="market-buildings" aria-label="Các công trình trong khu chợ"></div></div>
+      <div class="game-layout"><aside class="side-panel"><div class="panel-label">SỔ TAY NHÀ BUÔN</div><h2 id="rule-name">01 / QUY LUẬT GIÁ TRỊ</h2><p id="rule-principle"></p><div class="rule-seal" id="rule-symbol">₫</div><div class="history-title">NHẬT KÝ QUYẾT ĐỊNH</div><ol id="history-list" class="history-list"><li class="history-empty">Các quyết định của bạn sẽ xuất hiện ở đây.</li></ol></aside>
+      <section class="event-panel"><div class="event-meta"><span id="event-category">SẢN XUẤT & HÀNG HÓA</span><span id="event-number">TÌNH HUỐNG 01</span></div><h1 id="event-title"></h1><p id="event-description" class="event-description"></p><div class="investment-box"><div class="investment-title"><div><span>01 · ĐẦU TƯ TRƯỚC KHI QUYẾT ĐỊNH</span><p id="investment-hint">Chọn tối đa một công trình mỗi lượt; hiệu ứng sẽ tiếp tục trong các lượt sau.</p></div><strong id="investment-count">48 XU</strong></div><div id="project-cards" class="project-cards"></div><p id="project-feedback" aria-live="polite"></p></div><div class="choice-label">02 · BẠN SẼ CHỌN CÁCH NÀO?</div><div id="choices" class="choices"></div><div id="result" class="result" hidden aria-live="polite"><div class="result-top"><span id="result-stamp">BÁO CÁO PHIÊN CHỢ</span><span id="result-delta"></span></div><p id="result-story"></p><div class="lesson-box"><span>ĐIỀU CẦN NHỚ</span><p id="result-lesson"></p></div><div class="turn-report"><strong>BÁO CÁO THỊ TRƯỜNG</strong><p id="turn-report-text"></p></div><button id="continue-btn" class="primary-btn">SANG TÌNH HUỐNG TIẾP <span>→</span></button></div><div class="event-footer"><span>HÃY NGHĨ ĐẾN HỆ QUẢ TRƯỚC KHI CHỌN</span><span>⌁</span></div></section></div>
+    </section>
+
+    <section id="end-screen" class="screen end-screen" hidden><div class="end-card"><p class="eyebrow">BÁO CÁO CUỐI PHIÊN</p><h1 id="end-title">Khu chợ vẫn đang chuyển động.</h1><p class="end-lead" id="end-lead"></p><div id="ending-rank" class="ending-rank"></div><div class="final-meters" id="final-meters"></div><div class="debrief"><h2>BỐN QUY LUẬT BẠN ĐÃ GẶP</h2><div class="debrief-grid"><article><b>01 · GIÁ TRỊ</b><p>Sản xuất hàng hóa gắn với hao phí lao động xã hội cần thiết; năng suất và chi phí tạo nên lợi thế.</p></article><article><b>02 · CUNG – CẦU</b><p>Quan hệ cung cầu tác động đến giá cả và hướng dẫn quyết định sản xuất, tiêu dùng.</p></article><article><b>03 · LƯU THÔNG TIỀN TỆ</b><p>Lượng tiền cần thiết cần phù hợp với hàng hóa lưu thông và tốc độ quay vòng của tiền.</p></article><article><b>04 · CẠNH TRANH</b><p>Cạnh tranh thúc đẩy đổi mới, song cạnh tranh thiếu lành mạnh có thể gây tổn hại xã hội.</p></article></div></div><div class="end-actions"><button id="replay-btn" class="primary-btn">CHƠI LẠI <span>↻</span></button><a class="back-link" href="../bai-hoc.html">Đọc lại bài học →</a><a class="back-link" href="../index.html">Về GoodLawsPlease →</a></div></div></section>
+    <div id="chapter-overlay" class="chapter-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="chapter-overlay-title"><div class="chapter-card"><span class="eyebrow" id="chapter-overlay-kicker">CHƯƠNG 01 / 04</span><div id="chapter-medal" class="chapter-medal" hidden></div><h2 id="chapter-overlay-title"></h2><p id="chapter-overlay-body"></p><div class="chapter-objective"><span>MỤC TIÊU CHƯƠNG</span><strong id="chapter-overlay-goal"></strong></div><button id="chapter-overlay-button" class="primary-btn">BẮT ĐẦU CHƯƠNG <span>→</span></button></div></div>
+  </main>
+  <footer><span>PHIÊN CHỢ · BẢN MÔ PHỎNG HỌC TẬP</span><span>Các chỉ số là mô hình minh họa, không phải dự báo kinh tế thực tế.</span></footer>
+</body>
+</html>
